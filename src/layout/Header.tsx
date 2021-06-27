@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="#home">
           臺灣大學技專校院 <b>生師比</b>{' '}
         </Navbar.Brand>
@@ -131,7 +131,7 @@ const Header = () => {
               onChange={(e) => setSearchFieldValue(e.target.value)}
               value={searchFieldValue}
             />
-            <Button variant="outline-dark">搜尋</Button>
+            <Button variant="outline-light">搜尋</Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>

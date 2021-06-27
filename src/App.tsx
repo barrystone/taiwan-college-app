@@ -4,12 +4,12 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from './layout/Header';
+import AllColleges from './components/AllColleges';
 
 function App() {
-  const [allColleges, setAllColeges] = useState([]);
   const [searchRow, setSearchRow] = useState(365);
   useEffect(() => {
-    getCollegeRow();
+    // getCollegeRow();
     requestCollegeData(searchRow);
   }, []);
 
@@ -30,7 +30,7 @@ function App() {
     );
 
     const { values } = await res.json();
-    setAllColeges(values);
+    console.log(values);
   };
 
   return (
@@ -38,6 +38,9 @@ function App() {
       <header>
         <Header />
       </header>
+      <main>
+        <AllColleges />
+      </main>
     </div>
   );
 }

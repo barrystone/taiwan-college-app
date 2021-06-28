@@ -12,6 +12,7 @@ import {
 } from 'react-bootstrap';
 
 import cleanIcon from '../assets/images/cleaning-white.svg';
+import logoIcon from '../assets/images/logo.svg';
 
 interface Props {
   changeSchoolYear: Function;
@@ -48,9 +49,28 @@ const Header = ({
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
         <Navbar.Brand onClick={() => cleanSelectState()} href="#">
-          <Row style={{ width: '200px' }}>
-            <Col xs={0}>
-              台灣大專校院 <b>生師比</b>{' '}
+          <Row
+            style={
+              (screen.width as any) > 350
+                ? { width: '250px' }
+                : { width: '200px', marginLeft: '1px' }
+            }
+          >
+            <Col
+              xs={0}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              {(screen.width as any) > 350 ? (
+                <img src={logoIcon} alt="logo" style={{ height: '40px' }} />
+              ) : (
+                ''
+              )}
+              台灣大專校院{' '}
+              <b style={{ marginLeft: '5px', fontSize: '20px' }}>生師比</b>{' '}
             </Col>
           </Row>
         </Navbar.Brand>

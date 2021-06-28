@@ -9,6 +9,7 @@ interface Props {
   isPublic: string;
   sortPercent: string;
   onSearchFieldValue: string;
+  changeAfterFileterLength: Function;
 }
 
 const AllColleges = ({
@@ -17,7 +18,8 @@ const AllColleges = ({
   schoolType,
   isPublic,
   sortPercent,
-  onSearchFieldValue
+  onSearchFieldValue,
+  changeAfterFileterLength
 }: Props) => {
   const [displayColleges, setDisplayColleges] = useState(allColleges);
 
@@ -63,6 +65,8 @@ const AllColleges = ({
 
   const sortAllColleges = (array: Array<string[]>) => {
     let sortedArray: Array<string[]> = [...array];
+    changeAfterFileterLength(array);
+
     if (sortPercent === 'inc') {
       sortedArray.map((e) => e.unshift(e[8]));
       sortedArray.sort();
@@ -97,7 +101,16 @@ const AllColleges = ({
         <Row lg={5} md={3} sm={2} xs={1}>
           {displayColleges.map((college, idx) => (
             <Col key={idx} style={{ margin: '15px 0' }}>
-              <College data={college} />
+              <College
+                data={college}
+                rank={
+                  sortPercent === 'inc'
+                    ? displayColleges.length - displayColleges.indexOf(college)
+                    : sortPercent === 'dec'
+                    ? displayColleges.indexOf(college) + 1
+                    : 0
+                }
+              />
             </Col>
           ))}
         </Row>

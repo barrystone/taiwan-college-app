@@ -4,12 +4,16 @@ import { Card, Button, Badge, ProgressBar } from 'react-bootstrap';
 import collegeType1Image from '../assets/images/collegeType-1.svg';
 import collegeType2Image from '../assets/images/collegeType-2.svg';
 import collegeType3Image from '../assets/images/collegeType-3.svg';
+import medal1 from '../assets/images/medal-1.svg';
+import medal2 from '../assets/images/medal-2.svg';
+import medal3 from '../assets/images/medal-3.svg';
 
 interface Props {
   data: Array<string>;
+  rank: number;
 }
 
-const College = ({ data }: Props) => {
+const College = ({ data, rank }: Props) => {
   const [schoolImage, setSchoolImage] = useState('');
 
   const searchImage = async (schoolName: string) => {
@@ -37,6 +41,42 @@ const College = ({ data }: Props) => {
             alignItems: 'center'
           }}
         >
+          <div>
+            {rank ? (
+              rank <= 3 ? (
+                <img
+                  src={rank === 1 ? medal1 : rank === 2 ? medal2 : medal3}
+                  alt={rank === 1 ? 'first' : rank === 2 ? 'second' : 'third'}
+                  style={{
+                    position: 'absolute',
+                    height: '60px',
+                    left: '5px',
+                    top: '8px'
+                  }}
+                />
+              ) : (
+                <span
+                  style={{
+                    position: 'absolute',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '40px',
+                    width: '40px',
+                    left: '10px',
+                    top: '10px',
+                    fontSize: '18px',
+                    border: '1px black solid',
+                    borderRadius: '50%'
+                  }}
+                >
+                  {rank}
+                </span>
+              )
+            ) : (
+              ''
+            )}
+          </div>
           {schoolImage ? (
             <Card.Img
               variant="top"

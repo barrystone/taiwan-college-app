@@ -12,6 +12,7 @@ function App() {
   const [schoolType, setSchoolType] = useState('all');
   const [sortPercent, setSortPercent] = useState('no');
   const [onSearchFieldValue, setOnSearchFieldValue] = useState('');
+  const [afterFileterLength, setAfterFileterLength] = useState(0);
 
   const getAllColleges = async () => {
     const range = `A:I`;
@@ -37,6 +38,10 @@ function App() {
 
   const changeOnSearchFieldValue = (x: string) => {
     setOnSearchFieldValue(x);
+  };
+
+  const changeAfterFileterLength = (x: Array<string[]>) => {
+    setAfterFileterLength(x.length);
   };
 
   useEffect(() => {
@@ -82,6 +87,7 @@ function App() {
           changeSortPercent={changeSortPercent}
           sortPercent={sortPercent}
           changeOnSearchFieldValue={changeOnSearchFieldValue}
+          afterFileterLength={afterFileterLength}
         />
       </header>
       <main>
@@ -92,6 +98,7 @@ function App() {
           isPublic={isPublic}
           sortPercent={sortPercent}
           onSearchFieldValue={onSearchFieldValue}
+          changeAfterFileterLength={changeAfterFileterLength}
         />
       </main>
     </div>

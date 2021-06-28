@@ -21,6 +21,7 @@ interface Props {
   schoolType: string;
   isPublic: string;
   sortPercent: string;
+  afterFileterLength: Number;
 }
 
 const Header = ({
@@ -32,15 +33,20 @@ const Header = ({
   schoolType,
   isPublic,
   sortPercent,
-  changeOnSearchFieldValue
+  changeOnSearchFieldValue,
+  afterFileterLength
 }: Props) => {
   const [searchFieldValue, setSearchFieldValue] = useState('');
 
   return (
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
-          臺灣大學技專 <b>生師比</b>{' '}
+        <Navbar.Brand>
+          <Row style={{ width: '200px' }}>
+            <Col xs={0}>
+              台灣大專校院 <b>生師比</b>{' '}
+            </Col>
+          </Row>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -127,6 +133,10 @@ const Header = ({
             </Col>
             <Col>
               <NavDropdown
+                style={{
+                  border: '1px solid #57606f',
+                  borderRadius: '10px'
+                }}
                 title={
                   sortPercent === 'no'
                     ? '未排序'
@@ -144,18 +154,44 @@ const Header = ({
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
-                  onClick={() => changeSortPercent('inc')}
-                  href="#action/3.2"
-                >
-                  遞增
-                </NavDropdown.Item>
-                <NavDropdown.Item
                   onClick={() => changeSortPercent('dec')}
                   href="#action/3.3"
                 >
                   遞減
                 </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => changeSortPercent('inc')}
+                  href="#action/3.2"
+                >
+                  遞增
+                </NavDropdown.Item>
               </NavDropdown>
+            </Col>
+            <Col
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <div
+                style={{
+                  fontSize: '15px',
+                  color: 'white',
+                  width: '100px'
+                  // margin: '10px 0'
+                }}
+              >
+                剩{' '}
+                <span
+                  style={{
+                    fontSize: '20px'
+                  }}
+                >
+                  {afterFileterLength}
+                </span>{' '}
+                間
+              </div>
             </Col>
           </Nav>
           <Form inline>

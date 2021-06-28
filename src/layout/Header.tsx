@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import useWindowSize from '../hooks/useWindowSize';
 import {
   Button,
   Form,
@@ -7,9 +8,10 @@ import {
   Navbar,
   NavDropdown,
   Col,
-  Row,
-  Container
+  Row
 } from 'react-bootstrap';
+
+import cleanIcon from '../assets/images/cleaning-white.svg';
 
 interface Props {
   changeSchoolYear: Function;
@@ -22,6 +24,7 @@ interface Props {
   isPublic: string;
   sortPercent: string;
   afterFileterLength: Number;
+  cleanSelectState: Function;
 }
 
 const Header = ({
@@ -34,14 +37,17 @@ const Header = ({
   isPublic,
   sortPercent,
   changeOnSearchFieldValue,
-  afterFileterLength
+  afterFileterLength,
+  cleanSelectState
 }: Props) => {
   const [searchFieldValue, setSearchFieldValue] = useState('');
+
+  const screen = useWindowSize();
 
   return (
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand>
+        <Navbar.Brand onClick={() => cleanSelectState()} href="#">
           <Row style={{ width: '200px' }}>
             <Col xs={0}>
               台灣大專校院 <b>生師比</b>{' '}
@@ -192,12 +198,26 @@ const Header = ({
                 間
               </div>
             </Col>
+            <Col
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <img
+                src={cleanIcon}
+                alt="cleanIcon"
+                style={{ height: '20px', cursor: 'pointer' }}
+                onClick={() => cleanSelectState()}
+              />
+            </Col>
           </Nav>
           <Form inline>
             <Row style={{ margin: '5px auto' }}>
               <Col
                 xl={8}
-                md={7}
+                md={12}
                 style={{ display: 'flex', alignItems: 'center' }}
               >
                 <FormControl
@@ -219,14 +239,19 @@ const Header = ({
                   }}
                 />
               </Col>
-              <Col xl={4} md={5}>
-                <Button
-                  variant="outline-light"
-                  onClick={() => changeOnSearchFieldValue(searchFieldValue)}
-                  style={{ margin: '5px 0' }}
-                >
-                  搜尋
-                </Button>
+              <Col xl={4} md={0}>
+                {(screen.width as any) >= 1200 ||
+                (screen.width as any) < 992 ? (
+                  <Button
+                    variant="outline-light"
+                    onClick={() => changeOnSearchFieldValue(searchFieldValue)}
+                    style={{ margin: '5px 0' }}
+                  >
+                    搜尋
+                  </Button>
+                ) : (
+                  ''
+                )}
               </Col>
             </Row>
           </Form>

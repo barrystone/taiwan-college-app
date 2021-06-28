@@ -35,13 +35,20 @@ function App() {
   const changeSortPercent = (x: string) => {
     setSortPercent(x);
   };
-
   const changeOnSearchFieldValue = (x: string) => {
     setOnSearchFieldValue(x);
   };
 
   const changeAfterFileterLength = (x: Array<string[]>) => {
     setAfterFileterLength(x.length);
+  };
+
+  const cleanSelectState = () => {
+    setSchoolYear('108');
+    setSchoolType('all');
+    setIsPublic('all');
+    setOnSearchFieldValue('');
+    // setSortPercent('no');
   };
 
   useEffect(() => {
@@ -88,6 +95,7 @@ function App() {
           sortPercent={sortPercent}
           changeOnSearchFieldValue={changeOnSearchFieldValue}
           afterFileterLength={afterFileterLength}
+          cleanSelectState={cleanSelectState}
         />
       </header>
       <main>

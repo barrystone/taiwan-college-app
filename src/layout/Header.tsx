@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
   Form,
@@ -9,12 +9,27 @@ import {
   Col
 } from 'react-bootstrap';
 
-const Header = () => {
-  const [schoolYear, setSchoolYear] = useState('all');
-  const [isPublic, setIsPublic] = useState('all');
-  const [schoolType, setSchoolType] = useState('all');
-  const [searchFieldValue, setSearchFieldValue] = useState('');
+interface Props {
+  changeSchoolYear: Function;
+  changeSchoolType: Function;
+  changeIsPublic: Function;
+  changeSearchFieldValue: Function;
+  schoolYear: string;
+  schoolType: string;
+  isPublic: string;
+  searchFieldValue: string;
+}
 
+const Header = ({
+  changeSchoolYear,
+  changeSchoolType,
+  changeIsPublic,
+  changeSearchFieldValue,
+  schoolYear,
+  schoolType,
+  isPublic,
+  searchFieldValue
+}: Props) => {
   return (
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
@@ -22,42 +37,24 @@ const Header = () => {
           臺灣大學技專校院 <b>生師比</b>{' '}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse
-          id="basic-navbar-nav"
-          // style={{ backgroundColor: 'green' }}
-        >
-          <Nav
-            className="mr-auto"
-            // style={{ minWidth: '600px', backgroundColor: 'green' }}
-          >
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
             <Col>
-              <NavDropdown
-                title={
-                  (schoolYear === 'all' ? '106~108' : schoolYear) + ' 學年'
-                }
-                id="basic-nav-dropdown"
-              >
+              <NavDropdown title={schoolYear + ' 學年'} id="basic-nav-dropdown">
                 <NavDropdown.Item
-                  href="#action/3.1"
-                  onClick={() => setSchoolYear('all')}
-                >
-                  每年
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item
-                  onClick={() => setSchoolYear('106')}
+                  onClick={() => changeSchoolYear('106')}
                   href="#action/3.2"
                 >
                   106
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  onClick={() => setSchoolYear('107')}
+                  onClick={() => changeSchoolYear('107')}
                   href="#action/3.3"
                 >
                   107
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  onClick={() => setSchoolYear('108')}
+                  onClick={() => changeSchoolYear('108')}
                   href="#action/3.4"
                 >
                   108
@@ -71,19 +68,19 @@ const Header = () => {
               >
                 <NavDropdown.Item
                   href="#action/3.1"
-                  onClick={() => setIsPublic('公私立')}
+                  onClick={() => changeIsPublic('all')}
                 >
                   全部
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
-                  onClick={() => setIsPublic('公立')}
+                  onClick={() => changeIsPublic('公立')}
                   href="#action/3.2"
                 >
                   公立
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  onClick={() => setIsPublic('私立')}
+                  onClick={() => changeIsPublic('私立')}
                   href="#action/3.3"
                 >
                   私立
@@ -97,25 +94,25 @@ const Header = () => {
               >
                 <NavDropdown.Item
                   href="#action/3.1"
-                  onClick={() => setSchoolType('全部學校類別')}
+                  onClick={() => changeSchoolType('all')}
                 >
                   全部
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
-                  onClick={() => setSchoolType('一般大學')}
+                  onClick={() => changeSchoolType('一般大學')}
                   href="#action/3.2"
                 >
                   一般大學
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  onClick={() => setSchoolType('技專校院')}
+                  onClick={() => changeSchoolType('技專校院')}
                   href="#action/3.3"
                 >
                   技專校院
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  onClick={() => setSchoolType('宗教研修學院')}
+                  onClick={() => changeSchoolType('宗教研修學院')}
                   href="#action/3.4"
                 >
                   宗教研修學院
@@ -128,7 +125,7 @@ const Header = () => {
               type="text"
               placeholder="學校名稱..."
               className="mr-sm-2"
-              onChange={(e) => setSearchFieldValue(e.target.value)}
+              onChange={(e) => changeSearchFieldValue(e.target.value)}
               value={searchFieldValue}
             />
             <Button variant="outline-light">搜尋</Button>

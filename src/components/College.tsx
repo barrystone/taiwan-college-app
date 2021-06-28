@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button, Badge, ProgressBar } from 'react-bootstrap';
 
-import collegeType1Image from '../assets/images/collegeType-2.svg';
-import collegeType2Image from '../assets/images/collegeType-1.svg';
+import collegeType1Image from '../assets/images/collegeType-1.svg';
+import collegeType2Image from '../assets/images/collegeType-2.svg';
+import collegeType3Image from '../assets/images/collegeType-3.svg';
 
 interface Props {
   data: Array<string>;
@@ -26,7 +27,7 @@ const College = ({ data }: Props) => {
   };
   useEffect(() => {
     // searchImage(data[4]);
-    console.log((Number(data[7]) / (Number(data[7]) + 1)) * 100);
+    // console.log((Number(data[7]) / (Number(data[7]) + 1)) * 100);
   }, []);
 
   return (
@@ -50,7 +51,11 @@ const College = ({ data }: Props) => {
             <Card.Img
               variant="top"
               src={
-                data[2] === '一般大學' ? collegeType1Image : collegeType2Image
+                data[2] === '一般大學'
+                  ? collegeType1Image
+                  : data[2] === '技專校院'
+                  ? collegeType2Image
+                  : collegeType3Image
               }
               style={{ maxHeight: '100px', width: 'auto' }}
             ></Card.Img>

@@ -7,30 +7,38 @@ interface Props {
   schoolYear: string;
   schoolType: string;
   isPublic: string;
+  onSearchFieldValue: string;
 }
 
 const AllColleges = ({
   allColleges,
   schoolYear,
   schoolType,
-  isPublic
+  isPublic,
+  onSearchFieldValue
 }: Props) => {
   const [displayColleges, setDisplayColleges] = useState(allColleges);
 
-  useEffect(() => {
+  const filterAllColleges = () => {
     if (isPublic === 'all' && schoolType === 'all') {
-      setDisplayColleges(allColleges.filter((e) => e[0] === schoolYear));
+      setDisplayColleges(
+        allColleges
+          .filter((e) => e[0] === schoolYear)
+          .filter((e) => e[4].includes(onSearchFieldValue))
+      );
     } else if (isPublic === 'all' && schoolType !== 'all') {
       setDisplayColleges(
         allColleges
           .filter((e) => e[0] === schoolYear)
           .filter((e) => e[2] === schoolType)
+          .filter((e) => e[4].includes(onSearchFieldValue))
       );
     } else if (isPublic !== 'all' && schoolType === 'all') {
       setDisplayColleges(
         allColleges
           .filter((e) => e[0] === schoolYear)
           .filter((e) => e[1] === isPublic)
+          .filter((e) => e[4].includes(onSearchFieldValue))
       );
     } else {
       setDisplayColleges(
@@ -38,9 +46,14 @@ const AllColleges = ({
           .filter((e) => e[0] === schoolYear)
           .filter((e) => e[2] === schoolType)
           .filter((e) => e[1] === isPublic)
+          .filter((e) => e[4].includes(onSearchFieldValue))
       );
     }
-  }, [allColleges, schoolYear, isPublic, schoolType]);
+  };
+
+  useEffect(() => {
+    filterAllColleges();
+  }, [allColleges, schoolYear, isPublic, schoolType, onSearchFieldValue]);
 
   return (
     <>

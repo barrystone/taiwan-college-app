@@ -10,7 +10,7 @@ function App() {
   const [schoolYear, setSchoolYear] = useState('108');
   const [isPublic, setIsPublic] = useState('all');
   const [schoolType, setSchoolType] = useState('all');
-  const [searchFieldValue, setSearchFieldValue] = useState('');
+  const [onSearchFieldValue, setOnSearchFieldValue] = useState('');
 
   const getAllColleges = async () => {
     const range = `A:H`;
@@ -30,8 +30,9 @@ function App() {
   const changeIsPublic = (x: string) => {
     setIsPublic(x);
   };
-  const changeSearchFieldValue = (x: string) => {
-    setSearchFieldValue(x);
+
+  const changeOnSearchFieldValue = (x: string) => {
+    setOnSearchFieldValue(x);
   };
 
   useEffect(() => {
@@ -74,8 +75,7 @@ function App() {
           schoolType={schoolType}
           changeIsPublic={changeIsPublic}
           isPublic={isPublic}
-          changeSearchFieldValue={changeSearchFieldValue}
-          searchFieldValue={searchFieldValue}
+          changeOnSearchFieldValue={changeOnSearchFieldValue}
         />
       </header>
       <main>
@@ -84,6 +84,7 @@ function App() {
           schoolYear={schoolYear}
           schoolType={schoolType}
           isPublic={isPublic}
+          onSearchFieldValue={onSearchFieldValue}
         />
       </main>
     </div>

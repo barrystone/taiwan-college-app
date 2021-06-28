@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Form,
@@ -13,23 +13,23 @@ interface Props {
   changeSchoolYear: Function;
   changeSchoolType: Function;
   changeIsPublic: Function;
-  changeSearchFieldValue: Function;
+  changeOnSearchFieldValue: Function;
   schoolYear: string;
   schoolType: string;
   isPublic: string;
-  searchFieldValue: string;
 }
 
 const Header = ({
   changeSchoolYear,
   changeSchoolType,
   changeIsPublic,
-  changeSearchFieldValue,
   schoolYear,
   schoolType,
   isPublic,
-  searchFieldValue
+  changeOnSearchFieldValue
 }: Props) => {
+  const [searchFieldValue, setSearchFieldValue] = useState('');
+
   return (
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
@@ -125,10 +125,25 @@ const Header = ({
               type="text"
               placeholder="學校名稱..."
               className="mr-sm-2"
-              onChange={(e) => changeSearchFieldValue(e.target.value)}
+              onChange={(e) => {
+                if (e.target.value === '') {
+                  changeOnSearchFieldValue(e.target.value);
+                }
+                setSearchFieldValue(e.target.value);
+              }}
               value={searchFieldValue}
+              onKeyDown={(e: any) => {
+                if (e.key === 'Enter') {
+                  changeOnSearchFieldValue(searchFieldValue);
+                }
+              }}
             />
-            <Button variant="outline-light">搜尋</Button>
+            <Button
+              variant="outline-light"
+              onClick={() => changeOnSearchFieldValue(searchFieldValue)}
+            >
+              搜尋
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>

@@ -76,25 +76,30 @@ const College = ({ data }: Props) => {
               <Badge variant="info">私立</Badge>
             )}
             <br />
-            <ProgressBar style={{ marginTop: '10px', marginBottom: '2px' }}>
+            <ProgressBar
+              style={{
+                marginTop: '10px',
+                marginBottom: '7px',
+                height: '15px'
+              }}
+            >
               <ProgressBar
-                now={(Number(data[7]) / (Number(data[7]) + 1)) * 100}
+                now={Number(data[8])}
                 key={1}
-                style={{ backgroundColor: '#b2bec3', fontSize: '18px' }}
-                // label={(
-                //   (Number(data[7]) / (Number(data[7]) + 1)) *
-                //   100
-                // ).toFixed(2)}
+                style={{
+                  backgroundColor: '#a4b0be',
+                  fontSize: '12px'
+                }}
+                label={'學生'}
               />
               <ProgressBar
-                now={100 - (Number(data[7]) / (Number(data[7]) + 1)) * 100}
+                now={100 - Number(data[8])}
                 key={2}
                 style={{ backgroundColor: '#ff9ff3' }}
               />
             </ProgressBar>
-            <p style={{ fontSize: '17px' }}>
-              {((Number(data[7]) / (Number(data[7]) + 1)) * 100).toFixed(2)}{' '}
-              <span style={{ fontSize: '12px' }}> %</span>
+            <p style={{ fontSize: '20px' }}>
+              {Number(data[8])} <span style={{ fontSize: '12px' }}> %</span>
             </p>
           </Card.Text>
           <Button variant="warning">生師比</Button>

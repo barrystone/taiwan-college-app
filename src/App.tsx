@@ -13,7 +13,7 @@ function App() {
   const [onSearchFieldValue, setOnSearchFieldValue] = useState('');
 
   const getAllColleges = async () => {
-    const range = `A:H`;
+    const range = `A:I`;
     const res = await fetch(
       `${process.env.REACT_APP_GOOGLE_SHEET_API_BASE}/${process.env.REACT_APP_GOOGLE_SHEET_ID}/values/${range}?key=${process.env.REACT_APP_GOOGLE_API_KEY}`
     );

@@ -48,7 +48,7 @@ const Header = ({
   return (
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand onClick={() => cleanSelectState()} href="#">
+        <Navbar.Brand href="/">
           <Row
             style={
               (screen.width as any) > 350

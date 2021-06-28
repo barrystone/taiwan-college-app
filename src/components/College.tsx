@@ -25,10 +25,6 @@ const College = ({ data }: Props) => {
     const imageUrl = data.items[0].image.thumbnailLink;
     setSchoolImage(imageUrl);
   };
-  useEffect(() => {
-    // searchImage(data[4]);
-    // console.log((Number(data[7]) / (Number(data[7]) + 1)) * 100);
-  }, []);
 
   return (
     <>
@@ -64,6 +60,9 @@ const College = ({ data }: Props) => {
         <Card.Body>
           <Card.Title>{data[4]}</Card.Title>
           <Card.Text>
+            <Badge pill variant="danger">
+              {data[0]}
+            </Badge>{' '}
             {data[2] === '一般大學' ? (
               <Badge variant="primary">一般大學</Badge>
             ) : data[2] === '技專校院' ? (
@@ -79,13 +78,15 @@ const College = ({ data }: Props) => {
             <br />
             <ProgressBar style={{ marginTop: '10px', marginBottom: '2px' }}>
               <ProgressBar
-                // variant="dark"
                 now={(Number(data[7]) / (Number(data[7]) + 1)) * 100}
                 key={1}
-                style={{ backgroundColor: '#b2bec3' }}
+                style={{ backgroundColor: '#b2bec3', fontSize: '18px' }}
+                // label={(
+                //   (Number(data[7]) / (Number(data[7]) + 1)) *
+                //   100
+                // ).toFixed(2)}
               />
               <ProgressBar
-                // variant="warning"
                 now={100 - (Number(data[7]) / (Number(data[7]) + 1)) * 100}
                 key={2}
                 style={{ backgroundColor: '#ff9ff3' }}
@@ -96,7 +97,7 @@ const College = ({ data }: Props) => {
               <span style={{ fontSize: '12px' }}> %</span>
             </p>
           </Card.Text>
-          <Button variant="warning">師生比</Button>
+          <Button variant="warning">生師比</Button>
         </Card.Body>
       </Card>
     </>

@@ -6,7 +6,9 @@ import {
   Nav,
   Navbar,
   NavDropdown,
-  Col
+  Col,
+  Row,
+  Container
 } from 'react-bootstrap';
 
 interface Props {
@@ -34,7 +36,7 @@ const Header = ({
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="#home">
-          臺灣大學技專校院 <b>生師比</b>{' '}
+          臺灣大學技專 <b>生師比</b>{' '}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -42,10 +44,10 @@ const Header = ({
             <Col>
               <NavDropdown title={schoolYear + ' 學年'} id="basic-nav-dropdown">
                 <NavDropdown.Item
-                  onClick={() => changeSchoolYear('106')}
-                  href="#action/3.2"
+                  onClick={() => changeSchoolYear('108')}
+                  href="#action/3.4"
                 >
-                  106
+                  108
                 </NavDropdown.Item>
                 <NavDropdown.Item
                   onClick={() => changeSchoolYear('107')}
@@ -54,10 +56,10 @@ const Header = ({
                   107
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  onClick={() => changeSchoolYear('108')}
-                  href="#action/3.4"
+                  onClick={() => changeSchoolYear('106')}
+                  href="#action/3.2"
                 >
-                  108
+                  106
                 </NavDropdown.Item>
               </NavDropdown>
             </Col>
@@ -121,29 +123,37 @@ const Header = ({
             </Col>
           </Nav>
           <Form inline>
-            <FormControl
-              type="text"
-              placeholder="學校名稱..."
-              className="mr-sm-2"
-              onChange={(e) => {
-                if (e.target.value === '') {
-                  changeOnSearchFieldValue(e.target.value);
-                }
-                setSearchFieldValue(e.target.value);
-              }}
-              value={searchFieldValue}
-              onKeyDown={(e: any) => {
-                if (e.key === 'Enter') {
-                  changeOnSearchFieldValue(searchFieldValue);
-                }
-              }}
-            />
-            <Button
-              variant="outline-light"
-              onClick={() => changeOnSearchFieldValue(searchFieldValue)}
-            >
-              搜尋
-            </Button>
+            <Container>
+              <Row style={{ margin: '10px auto' }}>
+                <Col>
+                  <FormControl
+                    className="mr-sm-1"
+                    type="text"
+                    placeholder="學校名稱..."
+                    onChange={(e) => {
+                      if (e.target.value === '') {
+                        changeOnSearchFieldValue(e.target.value);
+                      }
+                      setSearchFieldValue(e.target.value);
+                    }}
+                    value={searchFieldValue}
+                    onKeyDown={(e: any) => {
+                      if (e.key === 'Enter') {
+                        changeOnSearchFieldValue(searchFieldValue);
+                      }
+                    }}
+                  />
+                </Col>
+                <Col>
+                  <Button
+                    variant="outline-light"
+                    onClick={() => changeOnSearchFieldValue(searchFieldValue)}
+                  >
+                    搜尋
+                  </Button>
+                </Col>
+              </Row>
+            </Container>
           </Form>
         </Navbar.Collapse>
       </Navbar>

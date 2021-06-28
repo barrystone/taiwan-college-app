@@ -179,7 +179,6 @@ const Header = ({
                   fontSize: '15px',
                   color: 'white',
                   width: '100px'
-                  // margin: '10px 0'
                 }}
               >
                 剩{' '}
@@ -195,37 +194,41 @@ const Header = ({
             </Col>
           </Nav>
           <Form inline>
-            <Container>
-              <Row style={{ margin: '10px auto' }}>
-                <Col>
-                  <FormControl
-                    className="mr-sm-1"
-                    type="text"
-                    placeholder="學校名稱..."
-                    onChange={(e) => {
-                      if (e.target.value === '') {
-                        changeOnSearchFieldValue(e.target.value);
-                      }
-                      setSearchFieldValue(e.target.value);
-                    }}
-                    value={searchFieldValue}
-                    onKeyDown={(e: any) => {
-                      if (e.key === 'Enter') {
-                        changeOnSearchFieldValue(searchFieldValue);
-                      }
-                    }}
-                  />
-                </Col>
-                <Col>
-                  <Button
-                    variant="outline-light"
-                    onClick={() => changeOnSearchFieldValue(searchFieldValue)}
-                  >
-                    搜尋
-                  </Button>
-                </Col>
-              </Row>
-            </Container>
+            <Row style={{ margin: '5px auto' }}>
+              <Col
+                xl={8}
+                md={7}
+                style={{ display: 'flex', alignItems: 'center' }}
+              >
+                <FormControl
+                  style={{ width: '100%', margin: '5px 0' }}
+                  // className="mr-sm-1"
+                  type="text"
+                  placeholder="學校名稱..."
+                  onChange={(e) => {
+                    if (e.target.value === '') {
+                      changeOnSearchFieldValue(e.target.value);
+                    }
+                    setSearchFieldValue(e.target.value);
+                  }}
+                  value={searchFieldValue}
+                  onKeyDown={(e: any) => {
+                    if (e.key === 'Enter') {
+                      changeOnSearchFieldValue(searchFieldValue);
+                    }
+                  }}
+                />
+              </Col>
+              <Col xl={4} md={5}>
+                <Button
+                  variant="outline-light"
+                  onClick={() => changeOnSearchFieldValue(searchFieldValue)}
+                  style={{ margin: '5px 0' }}
+                >
+                  搜尋
+                </Button>
+              </Col>
+            </Row>
           </Form>
         </Navbar.Collapse>
       </Navbar>

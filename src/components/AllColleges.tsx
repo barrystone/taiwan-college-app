@@ -7,6 +7,7 @@ interface Props {
   schoolYear: string;
   schoolType: string;
   isPublic: string;
+  sortPercent: string;
   onSearchFieldValue: string;
 }
 
@@ -15,6 +16,7 @@ const AllColleges = ({
   schoolYear,
   schoolType,
   isPublic,
+  sortPercent,
   onSearchFieldValue
 }: Props) => {
   const [displayColleges, setDisplayColleges] = useState(allColleges);
@@ -22,38 +24,72 @@ const AllColleges = ({
   const filterAllColleges = () => {
     if (isPublic === 'all' && schoolType === 'all') {
       setDisplayColleges(
-        allColleges
-          .filter((e) => e[0] === schoolYear)
-          .filter((e) => e[4].includes(onSearchFieldValue))
+        sortAllColleges(
+          allColleges
+            .filter((e) => e[0] === schoolYear)
+            .filter((e) => e[4].includes(onSearchFieldValue))
+        )
       );
     } else if (isPublic === 'all' && schoolType !== 'all') {
       setDisplayColleges(
-        allColleges
-          .filter((e) => e[0] === schoolYear)
-          .filter((e) => e[2] === schoolType)
-          .filter((e) => e[4].includes(onSearchFieldValue))
+        sortAllColleges(
+          allColleges
+            .filter((e) => e[0] === schoolYear)
+            .filter((e) => e[2] === schoolType)
+            .filter((e) => e[4].includes(onSearchFieldValue))
+        )
       );
     } else if (isPublic !== 'all' && schoolType === 'all') {
       setDisplayColleges(
-        allColleges
-          .filter((e) => e[0] === schoolYear)
-          .filter((e) => e[1] === isPublic)
-          .filter((e) => e[4].includes(onSearchFieldValue))
+        sortAllColleges(
+          allColleges
+            .filter((e) => e[0] === schoolYear)
+            .filter((e) => e[1] === isPublic)
+            .filter((e) => e[4].includes(onSearchFieldValue))
+        )
       );
     } else {
       setDisplayColleges(
-        allColleges
-          .filter((e) => e[0] === schoolYear)
-          .filter((e) => e[2] === schoolType)
-          .filter((e) => e[1] === isPublic)
-          .filter((e) => e[4].includes(onSearchFieldValue))
+        sortAllColleges(
+          allColleges
+            .filter((e) => e[0] === schoolYear)
+            .filter((e) => e[2] === schoolType)
+            .filter((e) => e[1] === isPublic)
+            .filter((e) => e[4].includes(onSearchFieldValue))
+        )
       );
+    }
+  };
+
+  const sortAllColleges = (array: Array<string[]>) => {
+    let sortedArray: Array<string[]> = [...array];
+    if (sortPercent === 'inc') {
+      sortedArray.map((e) => e.unshift(e[8]));
+      sortedArray.sort();
+      sortedArray.map((e) => e.shift());
+
+      return sortedArray;
+    } else if (sortPercent === 'dec') {
+      sortedArray.map((e) => e.unshift(e[8]));
+      sortedArray.sort().reverse();
+      sortedArray.map((e) => e.shift());
+
+      return sortedArray;
+    } else {
+      return sortedArray.sort();
     }
   };
 
   useEffect(() => {
     filterAllColleges();
-  }, [allColleges, schoolYear, isPublic, schoolType, onSearchFieldValue]);
+  }, [
+    allColleges,
+    schoolYear,
+    isPublic,
+    schoolType,
+    sortPercent,
+    onSearchFieldValue
+  ]);
 
   return (
     <>

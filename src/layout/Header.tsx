@@ -15,19 +15,23 @@ interface Props {
   changeSchoolYear: Function;
   changeSchoolType: Function;
   changeIsPublic: Function;
+  changeSortPercent: Function;
   changeOnSearchFieldValue: Function;
   schoolYear: string;
   schoolType: string;
   isPublic: string;
+  sortPercent: string;
 }
 
 const Header = ({
   changeSchoolYear,
   changeSchoolType,
   changeIsPublic,
+  changeSortPercent,
   schoolYear,
   schoolType,
   isPublic,
+  sortPercent,
   changeOnSearchFieldValue
 }: Props) => {
   const [searchFieldValue, setSearchFieldValue] = useState('');
@@ -118,6 +122,38 @@ const Header = ({
                   href="#action/3.4"
                 >
                   宗教研修學院
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Col>
+            <Col>
+              <NavDropdown
+                title={
+                  sortPercent === 'no'
+                    ? '未排序'
+                    : sortPercent === 'inc'
+                    ? '遞增'
+                    : '遞減'
+                }
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item
+                  href="#action/3.1"
+                  onClick={() => changeSortPercent('no')}
+                >
+                  未排序
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item
+                  onClick={() => changeSortPercent('inc')}
+                  href="#action/3.2"
+                >
+                  遞增
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => changeSortPercent('dec')}
+                  href="#action/3.3"
+                >
+                  遞減
                 </NavDropdown.Item>
               </NavDropdown>
             </Col>

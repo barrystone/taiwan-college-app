@@ -10,6 +10,7 @@ function App() {
   const [schoolYear, setSchoolYear] = useState('108');
   const [isPublic, setIsPublic] = useState('all');
   const [schoolType, setSchoolType] = useState('all');
+  const [sortPercent, setSortPercent] = useState('no');
   const [onSearchFieldValue, setOnSearchFieldValue] = useState('');
 
   const getAllColleges = async () => {
@@ -29,6 +30,9 @@ function App() {
   };
   const changeIsPublic = (x: string) => {
     setIsPublic(x);
+  };
+  const changeSortPercent = (x: string) => {
+    setSortPercent(x);
   };
 
   const changeOnSearchFieldValue = (x: string) => {
@@ -75,6 +79,8 @@ function App() {
           schoolType={schoolType}
           changeIsPublic={changeIsPublic}
           isPublic={isPublic}
+          changeSortPercent={changeSortPercent}
+          sortPercent={sortPercent}
           changeOnSearchFieldValue={changeOnSearchFieldValue}
         />
       </header>
@@ -84,6 +90,7 @@ function App() {
           schoolYear={schoolYear}
           schoolType={schoolType}
           isPublic={isPublic}
+          sortPercent={sortPercent}
           onSearchFieldValue={onSearchFieldValue}
         />
       </main>

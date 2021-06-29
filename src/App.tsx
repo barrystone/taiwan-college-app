@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from './layout/Header';
 import AllColleges from './components/AllColleges';
+import topIcon from './assets/images/top-arrow.svg';
 
 function App() {
   const [allColleges, setAllColeges] = useState([]);
@@ -107,6 +108,11 @@ function App() {
           changeAfterFileterLength={changeAfterFileterLength}
         />
       </main>
+      <a href="#">
+        <div className="home__backtotop">
+          <img src={topIcon} alt="top-icon" className="home__backtotop-icon" />
+        </div>
+      </a>
     </div>
   );
 }

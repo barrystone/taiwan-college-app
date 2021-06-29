@@ -15,3 +15,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.home__backtotop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  right: 30px;
+  bottom: 10px;
+  z-index: 5;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 50%;
+  opacity: 0.3;
+  transition: all 0.2s;
+}
+.home__backtotop:hover {
+  opacity: 1;
+}
+
+.home__backtotop img {
+  height: 30px;
+  width: 30px;
+}

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Button, Badge, ProgressBar } from 'react-bootstrap';
 
 import collegeType1Image from '../assets/images/collegeType-1.svg';
@@ -142,7 +143,9 @@ const College = ({ data, rank }: Props) => {
               {Number(data[8])} <span style={{ fontSize: '12px' }}> %</span>
             </p>
           </Card.Text>
-          <Button variant="warning">生師比</Button>
+          <Link to={`detail/${data[3]}`}>
+            <Button variant="warning">生師比</Button>
+          </Link>
         </Card.Body>
       </Card>
     </>

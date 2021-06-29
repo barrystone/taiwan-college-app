@@ -4,23 +4,17 @@ import Header from '../layout/Header';
 import AllColleges from '../components/AllColleges';
 import topIcon from '../assets/images/top-arrow.svg';
 
-const Home = () => {
-  const [allColleges, setAllColeges] = useState([]);
+interface Props {
+  allColleges: Array<string[]>;
+}
+
+const Home = ({ allColleges }: Props) => {
   const [schoolYear, setSchoolYear] = useState('108');
   const [isPublic, setIsPublic] = useState('all');
   const [schoolType, setSchoolType] = useState('all');
   const [sortPercent, setSortPercent] = useState('no');
   const [onSearchFieldValue, setOnSearchFieldValue] = useState('');
   const [afterFileterLength, setAfterFileterLength] = useState(0);
-
-  const getAllColleges = async () => {
-    const range = `A:I`;
-    const res = await fetch(
-      `${process.env.REACT_APP_GOOGLE_SHEET_API_BASE}/${process.env.REACT_APP_GOOGLE_SHEET_ID}/values/${range}?key=${process.env.REACT_APP_GOOGLE_API_KEY}`
-    );
-    const { values } = await res.json();
-    setAllColeges(values);
-  };
 
   const changeSchoolYear = (x: string) => {
     setSchoolYear(x);
@@ -49,10 +43,6 @@ const Home = () => {
     setOnSearchFieldValue('');
     // setSortPercent('no');
   };
-
-  useEffect(() => {
-    getAllColleges();
-  }, []);
 
   return (
     <>

@@ -97,7 +97,10 @@ const AllColleges = ({
 
   return (
     <>
-      <Container fluid={true} style={{ marginTop: '20px' }}>
+      <Container
+        fluid={true}
+        style={{ paddingTop: '90px', backgroundColor: '#000' }}
+      >
         <Row lg={5} md={3} sm={2} xs={1}>
           {displayColleges.map((college, idx) => (
             <Col key={idx} style={{ margin: '15px 0' }}>

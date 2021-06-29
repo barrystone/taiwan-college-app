@@ -83,21 +83,19 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <Header
-          changeSchoolYear={changeSchoolYear}
-          schoolYear={schoolYear}
-          changeSchoolType={changeSchoolType}
-          schoolType={schoolType}
-          changeIsPublic={changeIsPublic}
-          isPublic={isPublic}
-          changeSortPercent={changeSortPercent}
-          sortPercent={sortPercent}
-          changeOnSearchFieldValue={changeOnSearchFieldValue}
-          afterFileterLength={afterFileterLength}
-          cleanSelectState={cleanSelectState}
-        />
-      </header>
+      <Header
+        changeSchoolYear={changeSchoolYear}
+        schoolYear={schoolYear}
+        changeSchoolType={changeSchoolType}
+        schoolType={schoolType}
+        changeIsPublic={changeIsPublic}
+        isPublic={isPublic}
+        changeSortPercent={changeSortPercent}
+        sortPercent={sortPercent}
+        changeOnSearchFieldValue={changeOnSearchFieldValue}
+        afterFileterLength={afterFileterLength}
+        cleanSelectState={cleanSelectState}
+      />
       <main>
         <AllColleges
           allColleges={allColleges}

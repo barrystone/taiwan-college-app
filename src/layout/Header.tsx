@@ -47,7 +47,16 @@ const Header = ({
 
   return (
     <>
-      <Navbar expand="lg" bg="dark" variant="dark">
+      <Navbar
+        expand="lg"
+        bg="dark"
+        variant="dark"
+        fixed="top"
+        // sticky="top"
+        style={{
+          borderBottom: '3px solid white'
+        }}
+      >
         <Navbar.Brand href="/">
           <Row
             style={

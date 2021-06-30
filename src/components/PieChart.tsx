@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 
 interface Props {
-  formatPieChartData: Array<string[]>;
+  formatPieChartData: Array<any[]>;
 }
 
 const PieChart = ({ formatPieChartData }: Props) => {
@@ -11,16 +11,18 @@ const PieChart = ({ formatPieChartData }: Props) => {
   const option = {
     legend: {},
     tooltip: {
-      trigger: 'axis',
-      showContent: false
+      trigger: 'axis'
+      //   showContent: false
     },
-    dataset: {
-      source: [
-        ['學年', ...formatPieChartData.map((e) => e[0])],
-        ['學生數', ...formatPieChartData.map((e) => e[1])],
-        ['老師數', ...formatPieChartData.map((e) => e[2])]
-      ]
-    },
+    dataset: [
+      {
+        source: [
+          ['學年', ...formatPieChartData.map((e) => e[0] + ' 學年')],
+          ['學生', ...formatPieChartData.map((e) => e[1])],
+          ['老師', ...formatPieChartData.map((e) => e[2])]
+        ]
+      }
+    ],
     xAxis: { type: 'category' },
     yAxis: { gridIndex: 0 },
     grid: { top: '60%' },
@@ -37,18 +39,22 @@ const PieChart = ({ formatPieChartData }: Props) => {
         seriesLayoutBy: 'row',
         emphasis: { focus: 'series' }
       },
-      //   {
-      //     type: 'line',
-      //     smooth: true,
-      //     seriesLayoutBy: 'row',
-      //     emphasis: { focus: 'series' }
-      //   },
-      //   {
-      //     type: 'line',
-      //     smooth: true,
-      //     seriesLayoutBy: 'row',
-      //     emphasis: { focus: 'series' }
-      //   },
+      {
+        name: '每校平均學生',
+        type: 'line',
+        data: formatPieChartData.map((e) => e[3].studentsAvg),
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        name: '每校平均老師',
+        type: 'line',
+        data: formatPieChartData.map((e) => e[3].teachersAvg),
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
       {
         type: 'pie',
         id: 'pie',
@@ -56,7 +62,7 @@ const PieChart = ({ formatPieChartData }: Props) => {
         center: ['50%', '32%'],
         emphasis: { focus: 'data' },
         label: {
-          formatter: `{b}: {@${latestYear}} ({d}%)`
+          formatter: `{b}: {@${latestYear}} 人  ({d}%)`
         },
         encode: {
           itemName: '學年',
@@ -88,7 +94,7 @@ const PieChart = ({ formatPieChartData }: Props) => {
         series: {
           id: 'pie',
           label: {
-            formatter: '{b}: {@[' + dimensionValue + ']} ({d}%)'
+            formatter: '{b}: {@[' + dimensionValue + ']} 人 ({d}%)'
           },
           encode: {
             value: dimensionValue,

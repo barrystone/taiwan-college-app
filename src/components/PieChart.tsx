@@ -14,15 +14,13 @@ const PieChart = ({ formatPieChartData }: Props) => {
       trigger: 'axis'
       //   showContent: false
     },
-    dataset: [
-      {
-        source: [
-          ['學年', ...formatPieChartData.map((e) => e[0] + ' 學年')],
-          ['學生', ...formatPieChartData.map((e) => e[1])],
-          ['老師', ...formatPieChartData.map((e) => e[2])]
-        ]
-      }
-    ],
+    dataset: {
+      source: [
+        ['學年', ...formatPieChartData.map((e) => e[0] + ' 學年')],
+        ['學生', ...formatPieChartData.map((e) => e[1])],
+        ['老師', ...formatPieChartData.map((e) => e[2])]
+      ]
+    },
     xAxis: { type: 'category' },
     yAxis: { gridIndex: 0 },
     grid: { top: '60%' },
@@ -62,12 +60,12 @@ const PieChart = ({ formatPieChartData }: Props) => {
         center: ['50%', '32%'],
         emphasis: { focus: 'data' },
         label: {
-          formatter: `{b}: {@${latestYear}} 人  ({d}%)`
+          formatter: `{b}: {@${latestYear + ' 學年'}} 人  ({d}%)`
         },
         encode: {
           itemName: '學年',
-          value: latestYear,
-          tooltip: latestYear
+          value: latestYear + ' 學年',
+          tooltip: latestYear + ' 學年'
         }
       }
     ]

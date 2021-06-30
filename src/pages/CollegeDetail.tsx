@@ -1,4 +1,7 @@
 import { Col, Row, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+import BackArrowIcon from '../assets/images/back-arrow.svg';
 
 import PieChart from '../components/PieChart';
 
@@ -85,6 +88,14 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
               borderRight: '1px solid black'
             }}
           >
+            <Link to="/">
+              <img
+                src={BackArrowIcon}
+                alt="back-icon"
+                style={{ position: 'absolute', top: '20px', left: '20px' }}
+              />
+            </Link>
+
             <div style={{}}>
               <h1>{latestName}</h1>
             </div>

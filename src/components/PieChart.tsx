@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 
 interface Props {
@@ -7,8 +7,16 @@ interface Props {
 
 const PieChart = ({ formatPieChartData }: Props) => {
   console.log('pie formatPieChartData', formatPieChartData);
+
+  const eChartsRef = React.useRef(null as any);
+  const [option, setOption] = useState({});
+
+  useEffect(() => {
+    setOption(defaultOption);
+  }, []);
+
   const latestYear = formatPieChartData.map((e) => e[0])[0];
-  const option = {
+  const defaultOption = {
     legend: {},
     tooltip: {
       trigger: 'axis'
@@ -82,7 +90,6 @@ const PieChart = ({ formatPieChartData }: Props) => {
   function onChartLegendselectchanged(param: any, echarts: any) {
     console.log(param, echarts);
   }
-  const eChartsRef = React.useRef(null as any);
 
   function onUpdateAxisPointer(event: any) {
     if (event.axesInfo[0]) {
@@ -120,6 +127,7 @@ const PieChart = ({ formatPieChartData }: Props) => {
           updateAxisPointer: onUpdateAxisPointer
         }}
       />
+      ),
       {/* <div>Click Count: {count}</div> */}
     </>
   );

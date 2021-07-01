@@ -1,4 +1,3 @@
-import { relative } from 'path';
 import { Col, Row, Container, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -6,6 +5,7 @@ import BackArrowIcon from '../assets/images/back-arrow.svg';
 
 import PieChart from '../components/PieChart';
 import PercentGauge from '../components/PercentGauge';
+import RatioScatter from '../components/RatioScatter';
 
 interface Props {
   allColleges: Array<string[]>;
@@ -27,6 +27,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
   const latestYear = lastCollegeData.map((x) => x[0])[0];
   const latestRatio = lastCollegeData.map((x) => x[7])[0];
   const latestPercentage = lastCollegeData.map((x) => x[8])[0];
+  const latestStuCount = lastCollegeData.map((x) => x[5])[0];
 
   // Calculate average all of students or teacher (country) base on year.
   const clacAvg = (year: string, stuOrTch: string) => {
@@ -78,10 +79,6 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
     ];
   }) as any;
 
-  const stuTch108Ratio = (
-    Number(studentsAllYearsAvg[0]) / Number(teachersAllYearsAvg[0])
-  ).toFixed(2);
-
   // Return quota or rank of student-teacher ratio based on request.
   const stuTchLatestRatio = (req: string) => {
     let sortedArray: Array<string[]> = [
@@ -95,6 +92,19 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
     } else if (req === 'rank') {
       return sortedArray.indexOf(lastCollegeData[0]) + 1;
     }
+  };
+
+  const stuTch108RatioAvg = (
+    Number(studentsAllYearsAvg[0]) / Number(teachersAllYearsAvg[0])
+  ).toFixed(2);
+
+  const formatRatioScatterData = {
+    avg: [stuTch108RatioAvg, studentsAllYearsAvg[0]],
+    me: [latestName, latestRatio, latestStuCount],
+    others: allColleges
+      .filter((e) => e[0] === '108')
+      .filter((i) => i[4] !== latestName)
+      .map((x) => [x[4], x[7], x[5]])
   };
 
   return (
@@ -242,13 +252,13 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                   <div
                     style={{ position: 'absolute', left: '20%', top: '35%' }}
                   >
-                    <h2>
+                    <h3>
                       生師比 &nbsp;&nbsp;
                       <span style={{ fontSize: '40px' }}>
                         {latestRatio}
                       </span>{' '}
                       &nbsp; %
-                    </h2>
+                    </h3>
                   </div>
 
                   <div
@@ -256,12 +266,18 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                   >
                     <h6>
                       每校平均生師比 &nbsp;
-                      <span style={{ fontSize: '20px' }}>{stuTch108Ratio}</span>
+                      <span style={{ fontSize: '20px' }}>
+                        {stuTch108RatioAvg}
+                      </span>
                       %&nbsp;<span style={{ fontSize: '13px' }}> (108年)</span>
                     </h6>
                   </div>
                 </Col>
-                <Col></Col>
+                <Col>
+                  <RatioScatter
+                    formatRatioScatterData={formatRatioScatterData}
+                  />
+                </Col>
               </Row>
             </Container>
           </Col>

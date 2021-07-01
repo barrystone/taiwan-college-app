@@ -119,24 +119,24 @@ const College = ({ data, rank }: Props) => {
             <br />
             <ProgressBar
               style={{
-                marginTop: '10px',
-                marginBottom: '7px',
-                height: '15px'
+                marginTop: '12px',
+                marginBottom: '10px',
+                height: '12px'
               }}
             >
               <ProgressBar
                 now={Number(data[8])}
                 key={1}
                 style={{
-                  backgroundColor: '#a4b0be',
-                  fontSize: '12px'
+                  backgroundColor: '#e67e22',
+                  fontSize: '10px'
                 }}
                 label={'學生'}
               />
               <ProgressBar
                 now={100 - Number(data[8])}
                 key={2}
-                style={{ backgroundColor: '#ff9ff3' }}
+                style={{ backgroundColor: '#bdc3c7' }}
               />
             </ProgressBar>
             <p style={{ fontSize: '20px' }}>
@@ -144,7 +144,15 @@ const College = ({ data, rank }: Props) => {
             </p>
           </Card.Text>
           <Link to={`detail/${data[3]}`}>
-            <Button variant="warning">生師比</Button>
+            <Button
+              variant="warning"
+              style={{
+                backgroundColor: '#f7b731',
+                border: '1px solid grey'
+              }}
+            >
+              生師比
+            </Button>
           </Link>
         </Card.Body>
       </Card>

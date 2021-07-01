@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import BackArrowIcon from '../assets/images/back-arrow.svg';
 
 import PieChart from '../components/PieChart';
+import PercentGauge from '../components/PercentGauge';
 
 interface Props {
   allColleges: Array<string[]>;
@@ -25,6 +26,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
   const latestSchoolType = lastCollegeData.map((x) => x[2])[0];
   const latestYear = lastCollegeData.map((x) => x[0])[0];
   const latestRatio = lastCollegeData.map((x) => x[7])[0];
+  const latestPercentage = lastCollegeData.map((x) => x[8])[0];
 
   // Calculate average all of students or teacher (country) base on year.
   const clacAvg = (year: string, stuOrTch: string) => {
@@ -132,6 +134,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
               <Row
                 style={
                   {
+                    // position: 'relative'
                     // backgroundColor: 'yellow'
                   }
                 }
@@ -144,15 +147,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                   // backgroundColor: 'red'
                 }}
               >
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: '5%',
-                    top: '30%'
-                    // height: '400px',
-                    // backgroundColor: 'orange'
-                  }}
-                >
+                <Col lg={3}>
                   <h4>
                     {latestSchoolType === '宗教研修學院' ? (
                       <Badge variant="danger">宗教研修學院</Badge>
@@ -169,8 +164,21 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                       <Badge variant="success">公立</Badge>
                     )}
                   </h4>
-                </div>
-                <h1 style={{ maxWidth: '50%' }}>{latestName}</h1>
+                </Col>
+                <Col lg={6}>
+                  <h1>{latestName}</h1>
+                </Col>
+                <Col
+                  lg={3}
+                  style={{
+                    height: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}
+                >
+                  <PercentGauge latestPercentage={latestPercentage} />
+                </Col>
               </Row>
               <Row
                 style={

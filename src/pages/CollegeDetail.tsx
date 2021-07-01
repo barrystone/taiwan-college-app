@@ -76,9 +76,24 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
     ];
   }) as any;
 
-  const StutTch108Ratio = (
+  const stuTch108Ratio = (
     Number(studentsAllYearsAvg[0]) / Number(teachersAllYearsAvg[0])
   ).toFixed(2);
+
+  // Return quota or rank of student-teacher ratio based on request.
+  const stuTchLatestRatio = (req: string) => {
+    let sortedArray: Array<string[]> = [
+      ...allColleges.filter((e) => e[0] === latestYear)
+    ];
+    sortedArray.map((e) => e.unshift(e[8]));
+    sortedArray.sort().reverse();
+    sortedArray.map((e) => e.shift());
+    if (req === 'quota') {
+      return sortedArray.length;
+    } else if (req === 'rank') {
+      return sortedArray.indexOf(lastCollegeData[0]) + 1;
+    }
+  };
 
   return (
     <>
@@ -109,7 +124,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
               style={{
                 display: 'grid',
                 flexDirection: 'column',
-                gridTemplateRows: '1fr 1fr 1fr',
+                gridTemplateRows: '1fr .6fr 1fr',
                 height: '100%'
               }}
             >
@@ -126,14 +141,14 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                   justifyContent: 'center',
                   alignItems: 'center',
                   position: 'relative'
-                  // backgroundColor: 'red',
+                  // backgroundColor: 'red'
                 }}
               >
                 <div
                   style={{
                     position: 'absolute',
-                    left: '25px',
-                    top: '50px'
+                    left: '5%',
+                    top: '30%'
                     // height: '400px',
                     // backgroundColor: 'orange'
                   }}
@@ -170,15 +185,54 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                     // backgroundColor: 'purple'
                   }}
                 >
-                  <div style={{ position: 'absolute', left: '10%', top: '0%' }}>
+                  <div style={{ position: 'absolute', right: '0%', top: '5%' }}>
                     <h5>
                       <Badge pill variant="danger">
-                        {latestYear}
+                        {latestYear}年
                       </Badge>{' '}
                     </h5>
                   </div>
                   <div
-                    style={{ position: 'absolute', left: '15%', top: '20%' }}
+                    style={{
+                      position: 'absolute',
+                      left: '15%',
+                      top: '0%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center'
+                    }}
+                  >
+                    <div
+                      style={{
+                        border: '1px solid grey',
+                        padding: '1px',
+                        borderRadius: '50%'
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          height: '55px',
+                          width: '55px',
+                          border: '1px solid black',
+                          borderRadius: '50%',
+                          fontSize: '20px'
+                        }}
+                      >
+                        {stuTchLatestRatio('rank')}{' '}
+                        <span style={{ fontSize: '13px' }}>名</span>
+                      </div>
+                    </div>
+                    <div style={{ marginTop: '-3px' }}>
+                      <span style={{ fontSize: '10px' }}>
+                        共{stuTchLatestRatio('quota')}所學校
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    style={{ position: 'absolute', left: '20%', top: '35%' }}
                   >
                     <h2>
                       生師比 &nbsp;&nbsp;
@@ -188,14 +242,13 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                       &nbsp; %
                     </h2>
                   </div>
+
                   <div
-                    style={{ position: 'absolute', left: '20%', top: '60%' }}
+                    style={{ position: 'absolute', left: '20%', top: '70%' }}
                   >
                     <h6>
                       每校平均生師比 &nbsp;
-                      <span style={{ fontSize: '20px' }}>
-                        {StutTch108Ratio}
-                      </span>
+                      <span style={{ fontSize: '20px' }}>{stuTch108Ratio}</span>
                       %&nbsp;<span style={{ fontSize: '13px' }}> (108年)</span>
                     </h6>
                   </div>

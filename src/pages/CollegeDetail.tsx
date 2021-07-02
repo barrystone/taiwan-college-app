@@ -203,7 +203,9 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                     // backgroundColor: 'purple'
                   }}
                 >
-                  <div style={{ position: 'absolute', right: '0%', top: '5%' }}>
+                  <div
+                    style={{ position: 'absolute', right: '10%', top: '10%' }}
+                  >
                     <h5>
                       <Badge pill variant="danger">
                         {latestYear}年
@@ -250,7 +252,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                     </div>
                   </div>
                   <div
-                    style={{ position: 'absolute', left: '20%', top: '35%' }}
+                    style={{ position: 'absolute', left: '22%', top: '38%' }}
                   >
                     <h3>
                       生師比 &nbsp;&nbsp;

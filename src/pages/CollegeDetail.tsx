@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { Col, Row, Container, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -6,6 +7,9 @@ import BackArrowIcon from '../assets/images/back-arrow.svg';
 import PieChart from '../components/PieChart';
 import PercentGauge from '../components/PercentGauge';
 import RatioScatter from '../components/RatioScatter';
+
+const testingSchoolImage =
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMPzc49UKbhDRVpqL332Dn3cXoGfrW6tOMs6rNqfvakx2LKUscxMdQPMc&s';
 
 interface Props {
   allColleges: Array<string[]>;
@@ -107,6 +111,26 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
       .map((x) => [x[4], x[7], x[5]])
   };
 
+  const [schoolImage, setSchoolImage] = useState(testingSchoolImage);
+  // Request custom google search api to search first image we found.
+  const searchImage = async (schoolName: string) => {
+    const res = await fetch(
+      `${process.env.REACT_APP_GOOGLE_CUSTOMSEARCH_API_BASE}/?key=${process.env.REACT_APP_GOOGLE_API_KEY}&cx=${process.env.REACT_APP_GOOGLE_CUSTOMSEARCH_ENGINE_ID}&searchType=image&q=${schoolName}`
+    );
+    const data = await res.json();
+
+    if (data.items == null) {
+      return;
+    }
+    const imageUrl = data.items[0].image.thumbnailLink;
+    setSchoolImage(imageUrl);
+  };
+
+  useEffect(() => {
+    // searchImage(latestName);
+    console.log('schoolImage', schoolImage);
+  }, []);
+
   return (
     <>
       <Container
@@ -148,7 +172,9 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                     // backgroundColor: 'yellow'
                   }
                 }
-              ></Row>
+              >
+                <img src={schoolImage} alt="school-image" />
+              </Row>
               <Row
                 style={{
                   justifyContent: 'center',

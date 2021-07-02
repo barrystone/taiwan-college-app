@@ -2,7 +2,7 @@ import React from 'react';
 import useWindowSize from '../../hooks/useWindowSize';
 import { Col, Badge } from 'react-bootstrap';
 
-import RatioScatter from '../RatioScatter';
+import RatioScatter from '../../components/RatioScatter';
 
 interface Props {
   allColleges: Array<string[]>;

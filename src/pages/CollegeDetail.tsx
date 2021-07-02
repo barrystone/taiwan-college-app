@@ -4,10 +4,10 @@ import { Col, Row, Container, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import BackArrowIcon from '../assets/images/back-arrow.svg';
 
-import LeftTop from '../components/CollegeDetail/LeftTop';
-import LeftMid from '../components/CollegeDetail/LeftMid';
-import LeftBottom from '../components/CollegeDetail/LeftBottom';
-import Right from '../components/CollegeDetail/Right';
+import LeftTop from '../layout/CollegeDetail/LeftTop';
+import LeftMid from '../layout/CollegeDetail/LeftMid';
+import LeftBottom from '../layout/CollegeDetail/LeftBottom';
+import Right from '../layout/CollegeDetail/Right';
 
 interface Props {
   allColleges: Array<string[]>;

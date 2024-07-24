@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useWindowSize from '../hooks/useWindowSize';
 import {
   Button,
@@ -8,7 +8,7 @@ import {
   Navbar,
   NavDropdown,
   Col,
-  Row
+  Row,
 } from 'react-bootstrap';
 
 import cleanIcon from '../assets/images/cleaning-white.svg';
@@ -39,7 +39,7 @@ const Header = ({
   sortPercent,
   changeOnSearchFieldValue,
   afterFileterLength,
-  cleanSelectState
+  cleanSelectState,
 }: Props) => {
   const [searchFieldValue, setSearchFieldValue] = useState('');
 
@@ -54,7 +54,7 @@ const Header = ({
         fixed="top"
         // sticky="top"
         style={{
-          borderBottom: '3px solid white'
+          borderBottom: '3px solid white',
         }}
       >
         <Navbar.Brand href="/">
@@ -70,7 +70,7 @@ const Header = ({
               style={{
                 display: 'flex',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
               }}
             >
               {(screen.width as any) > 350 ? (
@@ -170,7 +170,7 @@ const Header = ({
               <NavDropdown
                 style={{
                   border: '1px solid #57606f',
-                  borderRadius: '10px'
+                  borderRadius: '10px',
                 }}
                 title={
                   sortPercent === 'no'
@@ -206,20 +206,20 @@ const Header = ({
               style={{
                 display: 'flex',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
               }}
             >
               <div
                 style={{
                   fontSize: '15px',
                   color: 'white',
-                  width: '100px'
+                  width: '100px',
                 }}
               >
                 剩{' '}
                 <span
                   style={{
-                    fontSize: '20px'
+                    fontSize: '20px',
                   }}
                 >
                   {afterFileterLength}
@@ -231,7 +231,7 @@ const Header = ({
               style={{
                 display: 'flex',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
               }}
             >
               <img

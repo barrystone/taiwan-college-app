@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactECharts from 'echarts-for-react';
 
 interface Props {
@@ -12,37 +11,37 @@ const PercentGauge = ({ latestPercentage }: Props) => {
         type: 'gauge',
         progress: {
           show: true,
-          width: 13
+          width: 13,
         },
         itemStyle: {
           color: '#e67e22',
           // color: 'grey',
           shadowBlur: 2,
           shadowOffsetX: 1,
-          shadowOffsetY: 1
+          shadowOffsetY: 1,
         },
         axisLine: {
           lineStyle: {
-            width: 2
-          }
+            width: 2,
+          },
         },
         axisTick: {
-          show: false
+          show: false,
         },
         splitLine: {
           length: 3,
           lineStyle: {
             width: 1,
-            color: '#999'
-          }
+            color: '#999',
+          },
         },
         axisLabel: {
           distance: 5,
           color: '#7f8c8d',
-          fontSize: 5
+          fontSize: 5,
         },
         title: {
-          show: false
+          show: false,
         },
         detail: {
           valueAnimation: true,
@@ -50,15 +49,15 @@ const PercentGauge = ({ latestPercentage }: Props) => {
           offsetCenter: [2, '110%'],
           formatter: function (value: number) {
             return value + '%';
-          }
+          },
         },
         data: [
           {
-            value: Number(latestPercentage)
-          }
-        ]
-      }
-    ]
+            value: Number(latestPercentage),
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -69,7 +68,7 @@ const PercentGauge = ({ latestPercentage }: Props) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
       }}
     >
       <ReactECharts
@@ -77,7 +76,7 @@ const PercentGauge = ({ latestPercentage }: Props) => {
         style={{
           width: '90%',
           height: '90%',
-          paddingTop: '10%'
+          paddingTop: '10%',
         }}
       />
       <span style={{ marginLeft: '-2%', fontSize: '12px' }}>學生佔比</span>

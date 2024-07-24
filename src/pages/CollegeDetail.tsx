@@ -1,6 +1,5 @@
-import React from 'react';
 import useWindowSize from '../hooks/useWindowSize';
-import { Col, Row, Container, Badge } from 'react-bootstrap';
+import { Col, Row, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import BackArrowIcon from '../assets/images/back-arrow.svg';
 
@@ -47,12 +46,12 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
   const studentsAllYearsAvg: Array<string> = [
     clacAvg('108', 'stu'),
     clacAvg('107', 'stu'),
-    clacAvg('106', 'stu')
+    clacAvg('106', 'stu'),
   ];
   const teachersAllYearsAvg: Array<string> = [
     clacAvg('108', 'tch'),
     clacAvg('107', 'tch'),
-    clacAvg('106', 'tch')
+    clacAvg('106', 'tch'),
   ];
 
   const size = useWindowSize();
@@ -63,7 +62,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
       <Container
         style={{
           maxWidth: '100%',
-          height: '100vh'
+          height: '100vh',
         }}
       >
         <Row>
@@ -74,7 +73,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              borderRight: '1px solid black'
+              borderRight: '1px solid black',
             }}
           >
             <Link to="/">
@@ -85,7 +84,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                   position: 'absolute',
                   top: '20px',
                   left: '20px',
-                  zIndex: 2
+                  zIndex: 2,
                 }}
               />
             </Link>
@@ -94,7 +93,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                 display: 'grid',
                 flexDirection: 'column',
                 gridTemplateRows: '.8fr .6fr 1fr',
-                height: '100%'
+                height: '100%',
               }}
             >
               <Row>
@@ -104,7 +103,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
-                  position: 'relative'
+                  position: 'relative',
                 }}
               >
                 <LeftMid
@@ -114,7 +113,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
               </Row>
               <Row
                 style={{
-                  flexDirection: bottomPartFlexDirection
+                  flexDirection: bottomPartFlexDirection,
                 }}
               >
                 <LeftBottom
@@ -132,7 +131,7 @@ const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
               height: '100vh',
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'center'
+              alignItems: 'center',
             }}
           >
             <Right

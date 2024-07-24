@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Header from '../layout/Header';
 import AllColleges from '../components/AllColleges';
@@ -44,6 +44,10 @@ const Home = ({ allColleges }: Props) => {
     // setSortPercent('no');
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       <Header
@@ -70,11 +74,9 @@ const Home = ({ allColleges }: Props) => {
           changeAfterFileterLength={changeAfterFileterLength}
         />
       </main>
-      <a href="#">
-        <div className="home__backtotop">
-          <img src={topIcon} alt="top-icon" className="home__backtotop-icon" />
-        </div>
-      </a>
+      <button onClick={scrollToTop} className="home__backtotop">
+        <img src={topIcon} alt="top-icon" className="home__backtotop-icon" />
+      </button>
     </>
   );
 };

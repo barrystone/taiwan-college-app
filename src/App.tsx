@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
@@ -10,18 +10,18 @@ import CollegeDetail from './pages/CollegeDetail';
 function App() {
   const [allColleges, setAllColeges] = useState([]);
 
-  const getAllColleges = async () => {
-    const range = `A:I`;
-    const res = await fetch(
-      `${process.env.REACT_APP_GOOGLE_SHEET_API_BASE}/${process.env.REACT_APP_GOOGLE_SHEET_ID}/values/${range}?key=${process.env.REACT_APP_GOOGLE_API_KEY}`
-    );
-    const { values } = await res.json();
-    setAllColeges(values);
-  };
-
   useEffect(() => {
+    const getAllColleges = async () => {
+      const range = `A:I`;
+      const res = await fetch(
+        `${process.env.REACT_APP_GOOGLE_SHEET_API_BASE}/${process.env.REACT_APP_GOOGLE_SHEET_ID}/values/${range}?key=${process.env.REACT_APP_GOOGLE_API_KEY}`
+      );
+      const { values } = await res.json();
+      setAllColeges(values);
+    };
+
     getAllColleges();
-  }, []);
+  }, [setAllColeges]);
 
   return (
     <div className="App">

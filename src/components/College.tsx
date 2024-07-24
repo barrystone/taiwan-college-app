@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button, Badge, ProgressBar } from 'react-bootstrap';
 
@@ -23,7 +22,7 @@ const College = ({ data, rank }: Props) => {
             height: '150px',
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
           }}
         >
           <div>
@@ -36,7 +35,7 @@ const College = ({ data, rank }: Props) => {
                     position: 'absolute',
                     height: '60px',
                     left: '5px',
-                    top: '8px'
+                    top: '8px',
                   }}
                 />
               ) : (
@@ -52,7 +51,7 @@ const College = ({ data, rank }: Props) => {
                     top: '10px',
                     fontSize: '18px',
                     border: '1px black solid',
-                    borderRadius: '50%'
+                    borderRadius: '50%',
                   }}
                 >
                   {rank}
@@ -97,7 +96,7 @@ const College = ({ data, rank }: Props) => {
               style={{
                 marginTop: '12px',
                 marginBottom: '10px',
-                height: '12px'
+                height: '12px',
               }}
             >
               <ProgressBar
@@ -105,7 +104,7 @@ const College = ({ data, rank }: Props) => {
                 key={1}
                 style={{
                   backgroundColor: '#e67e22',
-                  fontSize: '10px'
+                  fontSize: '10px',
                 }}
                 label={'學生'}
               />
@@ -124,7 +123,7 @@ const College = ({ data, rank }: Props) => {
               variant="warning"
               style={{
                 backgroundColor: '#f7b731',
-                border: '1px solid grey'
+                border: '1px solid grey',
               }}
             >
               生師比

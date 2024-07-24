@@ -11,7 +11,7 @@ export default function useWindowSize(): Size {
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
   const [windowSize, setWindowSize] = useState<Size>({
     width: undefined,
-    height: undefined
+    height: undefined,
   });
   useEffect(() => {
     // Handler to call on window resize
@@ -19,7 +19,7 @@ export default function useWindowSize(): Size {
       // Set window width/height to state
       setWindowSize({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       });
     }
     // Add event listener
@@ -28,6 +28,7 @@ export default function useWindowSize(): Size {
     handleResize();
     // Remove event listener on cleanup
     return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty array ensures that effect is only run on mount
+  }, [setWindowSize]); // Empty array ensures that effect is only run on mount
+
   return windowSize;
 }

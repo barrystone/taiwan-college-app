@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactECharts from 'echarts-for-react';
 
 // Display icon of This college on scatter (I am using logo url).
@@ -15,7 +14,7 @@ interface Props {
 const RatioScatter = ({ formatRatioScatterData }: Props) => {
   const avgData = [
     Number(formatRatioScatterData.avg[0]),
-    Number(formatRatioScatterData.avg[1])
+    Number(formatRatioScatterData.avg[1]),
   ];
   const cutComma = (x: string) => {
     return (x + '').replace(',', '');
@@ -23,12 +22,12 @@ const RatioScatter = ({ formatRatioScatterData }: Props) => {
 
   const othersData = formatRatioScatterData.others.map((x) => [
     Number(x[1]),
-    Number(cutComma(x[2]))
+    Number(cutComma(x[2])),
   ]);
 
   const meData = [
     Number(formatRatioScatterData.me[1]),
-    Number(cutComma(formatRatioScatterData.me[2]))
+    Number(cutComma(formatRatioScatterData.me[2])),
   ];
 
   const option = {
@@ -37,41 +36,41 @@ const RatioScatter = ({ formatRatioScatterData }: Props) => {
       textStyle: {
         fontSize: 16,
         lineHeight: 35,
-        fontFamily: 'monospace'
+        fontFamily: 'monospace',
       },
       subtext: '資料來源: 政府資料開放平臺',
       subtextStyle: {
         width: '100px',
         align: 'center',
         fontSize: 5,
-        lineHeight: 27
+        lineHeight: 27,
       },
       sublink: 'https://data.gov.tw/dataset/26219',
-      subtarget: 'blank'
+      subtarget: 'blank',
     },
     grid: {
       left: '0%',
       right: '5%',
       bottom: '18%',
-      containLabel: true
+      containLabel: true,
     },
     xAxis: [
       {
         type: 'value',
         scale: true,
         axisLabel: {
-          formatter: '{value}%'
-        }
-      }
+          formatter: '{value}%',
+        },
+      },
     ],
     yAxis: [
       {
         type: 'value',
         scale: true,
         axisLabel: {
-          formatter: '{value} 人'
-        }
-      }
+          formatter: '{value} 人',
+        },
+      },
     ],
     tooltip: {
       position: 'top',
@@ -99,22 +98,22 @@ const RatioScatter = ({ formatRatioScatterData }: Props) => {
           '</b>人' +
           '</div></div>'
         );
-      }
+      },
     },
     legend: {
       data: [
         '我',
         {
           name: '平均值',
-          icon: 'circle'
+          icon: 'circle',
         },
-        '其他大學'
+        '其他大學',
       ],
       right: 0,
       top: 35,
       textStyle: {
-        fontSize: 10
-      }
+        fontSize: 10,
+      },
     },
     series: [
       {
@@ -124,8 +123,8 @@ const RatioScatter = ({ formatRatioScatterData }: Props) => {
         data: othersData,
         type: 'scatter',
         itemStyle: {
-          color: '#bdc3c7'
-        }
+          color: '#bdc3c7',
+        },
       },
       {
         name: '平均值',
@@ -135,8 +134,8 @@ const RatioScatter = ({ formatRatioScatterData }: Props) => {
         data: [avgData],
         type: 'scatter',
         itemStyle: {
-          color: '#7158e2'
-        }
+          color: '#7158e2',
+        },
       },
       {
         name: '我',
@@ -146,10 +145,10 @@ const RatioScatter = ({ formatRatioScatterData }: Props) => {
         data: [meData],
         type: 'scatter',
         itemStyle: {
-          color: '#e67e22'
-        }
-      }
-    ]
+          color: '#e67e22',
+        },
+      },
+    ],
   };
   return (
     <div
@@ -159,7 +158,7 @@ const RatioScatter = ({ formatRatioScatterData }: Props) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
       }}
     >
       <ReactECharts
@@ -167,7 +166,7 @@ const RatioScatter = ({ formatRatioScatterData }: Props) => {
         style={{
           width: '100%',
           height: '100%',
-          paddingTop: '5%'
+          paddingTop: '5%',
         }}
       />
     </div>

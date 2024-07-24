@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.396efae8.css",
-    "main.js": "/static/js/main.a82dc9c1.js",
-    "static/media/collegeType-1.svg": "/static/media/collegeType-1.42efa0940cf58834ec0fcaffa5e45345.svg",
-    "static/media/logo.svg": "/static/media/logo.43a5e574a1fa4c3a720720c1018047f7.svg",
-    "static/media/medal-3.svg": "/static/media/medal-3.66799ff871932bd8fd178ad01fc9719f.svg",
-    "static/media/medal-2.svg": "/static/media/medal-2.a115f5fc47e3ad56fedbee745723cb54.svg",
-    "static/media/top-arrow.svg": "/static/media/top-arrow.f2acb447055ba2305394dda930b31d32.svg",
-    "static/media/medal-1.svg": "/static/media/medal-1.e4575def2de40797870517895626ceea.svg",
-    "static/media/collegeType-3.svg": "/static/media/collegeType-3.4e1228f2472d93e404677e13f35eba11.svg",
-    "static/media/collegeType-2.svg": "/static/media/collegeType-2.5f45bc1e32a76d4a4059584f3408cd6d.svg",
-    "static/media/cleaning-white.svg": "/static/media/cleaning-white.19c37fcafa007c1abb801aa20b4d3363.svg",
-    "static/media/back-arrow.svg": "/static/media/back-arrow.53678069dbe6b00f72a94cb179a598b6.svg",
-    "index.html": "/index.html",
-    "main.396efae8.css.map": "/static/css/main.396efae8.css.map",
-    "main.a82dc9c1.js.map": "/static/js/main.a82dc9c1.js.map"
+    "main.css": "/taiwan-college-app/static/css/main.396efae8.css",
+    "main.js": "/taiwan-college-app/static/js/main.f528bb3a.js",
+    "static/media/collegeType-1.svg": "/taiwan-college-app/static/media/collegeType-1.42efa0940cf58834ec0fcaffa5e45345.svg",
+    "static/media/logo.svg": "/taiwan-college-app/static/media/logo.43a5e574a1fa4c3a720720c1018047f7.svg",
+    "static/media/medal-3.svg": "/taiwan-college-app/static/media/medal-3.66799ff871932bd8fd178ad01fc9719f.svg",
+    "static/media/medal-2.svg": "/taiwan-college-app/static/media/medal-2.a115f5fc47e3ad56fedbee745723cb54.svg",
+    "static/media/top-arrow.svg": "/taiwan-college-app/static/media/top-arrow.f2acb447055ba2305394dda930b31d32.svg",
+    "static/media/medal-1.svg": "/taiwan-college-app/static/media/medal-1.e4575def2de40797870517895626ceea.svg",
+    "static/media/collegeType-3.svg": "/taiwan-college-app/static/media/collegeType-3.4e1228f2472d93e404677e13f35eba11.svg",
+    "static/media/collegeType-2.svg": "/taiwan-college-app/static/media/collegeType-2.5f45bc1e32a76d4a4059584f3408cd6d.svg",
+    "static/media/cleaning-white.svg": "/taiwan-college-app/static/media/cleaning-white.19c37fcafa007c1abb801aa20b4d3363.svg",
+    "static/media/back-arrow.svg": "/taiwan-college-app/static/media/back-arrow.53678069dbe6b00f72a94cb179a598b6.svg",
+    "index.html": "/taiwan-college-app/index.html",
+    "main.396efae8.css.map": "/taiwan-college-app/static/css/main.396efae8.css.map",
+    "main.f528bb3a.js.map": "/taiwan-college-app/static/js/main.f528bb3a.js.map"
   },
   "entrypoints": [
     "static/css/main.396efae8.css",
-    "static/js/main.a82dc9c1.js"
+    "static/js/main.f528bb3a.js"
   ]
 }

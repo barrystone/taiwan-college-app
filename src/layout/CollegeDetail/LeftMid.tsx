@@ -18,18 +18,18 @@ const LeftMid = ({ lastCollegeData, latestName }: Props) => {
       <Col lg={3}>
         <h4>
           {latestSchoolType === '宗教研修學院' ? (
-            <Badge variant="danger">宗教研修學院</Badge>
+            <Badge bg="danger">宗教研修學院</Badge>
           ) : latestSchoolType === '技專校院' ? (
-            <Badge variant="secondary">技專校院</Badge>
+            <Badge bg="secondary">技專校院</Badge>
           ) : (
-            <Badge variant="primary">一般大學</Badge>
+            <Badge bg="primary">一般大學</Badge>
           )}{' '}
         </h4>
         <h4>
           {latestPublicType === '私立' ? (
-            <Badge variant="info">私立</Badge>
+            <Badge bg="info">私立</Badge>
           ) : (
-            <Badge variant="success">公立</Badge>
+            <Badge bg="success">公立</Badge>
           )}
         </h4>
       </Col>
@@ -42,7 +42,7 @@ const LeftMid = ({ lastCollegeData, latestName }: Props) => {
           height: '100%',
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
       >
         <PercentGauge latestPercentage={latestPercentage} />

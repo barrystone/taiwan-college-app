@@ -7,18 +7,14 @@ import LeftTop from '../layout/CollegeDetail/LeftTop';
 import LeftMid from '../layout/CollegeDetail/LeftMid';
 import LeftBottom from '../layout/CollegeDetail/LeftBottom';
 import Right from '../layout/CollegeDetail/Right';
+import { useParams } from 'react-router-dom';
 
 interface Props {
   allColleges: Array<string[]>;
-  match: {
-    params: {
-      id: string;
-    };
-  };
 }
 
-const CollegeDetail = ({ match: { params }, allColleges }: Props) => {
-  const { id } = params;
+const CollegeDetail = ({ allColleges }: Props) => {
+  const { id } = useParams<{ id: string }>();
 
   const collegeData = allColleges.filter((e) => e[3] === id);
   const lastCollegeData = collegeData.slice(-1);

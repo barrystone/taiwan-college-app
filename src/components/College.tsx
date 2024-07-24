@@ -76,20 +76,20 @@ const College = ({ data, rank }: Props) => {
         <Card.Body>
           <Card.Title>{data[4]}</Card.Title>
           <Card.Text>
-            <Badge pill variant="danger">
+            <Badge pill bg="danger">
               {data[0]}
             </Badge>{' '}
             {data[2] === '一般大學' ? (
-              <Badge variant="primary">一般大學</Badge>
+              <Badge bg="primary">一般大學</Badge>
             ) : data[2] === '技專校院' ? (
-              <Badge variant="secondary">技專校院</Badge>
+              <Badge bg="secondary">技專校院</Badge>
             ) : (
-              <Badge variant="danger">宗教研修學院</Badge>
+              <Badge bg="danger">宗教研修學院</Badge>
             )}{' '}
             {data[1] === '公立' ? (
-              <Badge variant="success">公立</Badge>
+              <Badge bg="success">公立</Badge>
             ) : (
-              <Badge variant="info">私立</Badge>
+              <Badge bg="info">私立</Badge>
             )}
             <br />
             <ProgressBar

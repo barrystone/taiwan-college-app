@@ -222,7 +222,7 @@ const Header = ({
                     fontSize: '20px',
                   }}
                 >
-                  {afterFileterLength}
+                  <>{afterFileterLength}</>
                 </span>{' '}
                 間
               </div>
@@ -242,7 +242,8 @@ const Header = ({
               />
             </Col>
           </Nav>
-          <Form inline>
+          {/* <Form inline> */}
+          <Form>
             <Row style={{ margin: '5px auto' }}>
               <Col
                 xl={8}

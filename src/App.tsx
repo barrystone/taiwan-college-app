@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -26,19 +26,13 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            component={(props: any) => <Home {...{ ...props, allColleges }} />}
-          />
+        <Routes>
+          <Route path="/" element={<Home allColleges={allColleges} />} />
           <Route
             path="/detail/:id"
-            component={(props: any) => (
-              <CollegeDetail {...{ ...props, allColleges }} />
-            )}
+            element={<CollegeDetail allColleges={allColleges} />}
           />
-        </Switch>
+        </Routes>
       </Router>
     </div>
   );

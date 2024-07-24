@@ -17,7 +17,7 @@ const LeftBottom = ({
   lastCollegeData,
   latestName,
   studentsLatestYearsAvg,
-  teachersLatestYearsAvg
+  teachersLatestYearsAvg,
 }: Props) => {
   const latestYear = lastCollegeData.map((x) => x[0])[0];
   const latestRatio = lastCollegeData.map((x) => x[7])[0];
@@ -26,7 +26,7 @@ const LeftBottom = ({
   // Return quota or rank of student-teacher ratio based on request.
   const stuTchLatestRatio = (req: string) => {
     let sortedArray: Array<string[]> = [
-      ...allColleges.filter((e) => e[0] === latestYear)
+      ...allColleges.filter((e) => e[0] === latestYear),
     ];
     sortedArray.map((e) => e.unshift(e[8]));
     sortedArray.sort().reverse();
@@ -48,7 +48,7 @@ const LeftBottom = ({
     others: allColleges
       .filter((e) => e[0] === '108')
       .filter((i) => i[4] !== latestName)
-      .map((x) => [x[4], x[7], x[5]])
+      .map((x) => [x[4], x[7], x[5]]),
   };
 
   const size = useWindowSize();
@@ -59,12 +59,12 @@ const LeftBottom = ({
     <>
       <Col
         style={{
-          position: 'relative'
+          position: 'relative',
         }}
       >
         <div style={{ position: 'absolute', right: '10%', top: '10%' }}>
           <h5>
-            <Badge pill variant="danger">
+            <Badge pill bg="danger">
               {latestYear}年
             </Badge>{' '}
           </h5>
@@ -76,14 +76,14 @@ const LeftBottom = ({
             top: '0%',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
           }}
         >
           <div
             style={{
               border: '1px solid grey',
               padding: '1px',
-              borderRadius: '50%'
+              borderRadius: '50%',
             }}
           >
             <div
@@ -95,7 +95,7 @@ const LeftBottom = ({
                 width: '55px',
                 border: '1px solid black',
                 borderRadius: '50%',
-                fontSize: '20px'
+                fontSize: '20px',
               }}
             >
               {stuTchLatestRatio('rank')}{' '}

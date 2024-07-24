@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/taiwan-college-app/static/css/main.97f4a008.chunk.css",
-    "main.js": "/taiwan-college-app/static/js/main.f243c353.chunk.js",
-    "main.js.map": "/taiwan-college-app/static/js/main.f243c353.chunk.js.map",
+    "main.js": "/taiwan-college-app/static/js/main.f2490414.chunk.js",
+    "main.js.map": "/taiwan-college-app/static/js/main.f2490414.chunk.js.map",
     "runtime-main.js": "/taiwan-college-app/static/js/runtime-main.355fb979.js",
     "runtime-main.js.map": "/taiwan-college-app/static/js/runtime-main.355fb979.js.map",
     "static/css/2.8ea71ad7.chunk.css": "/taiwan-college-app/static/css/2.8ea71ad7.chunk.css",
@@ -30,6 +30,6 @@
     "static/css/2.8ea71ad7.chunk.css",
     "static/js/2.932fe07d.chunk.js",
     "static/css/main.97f4a008.chunk.css",
-    "static/js/main.f243c353.chunk.js"
+    "static/js/main.f2490414.chunk.js"
   ]
 }

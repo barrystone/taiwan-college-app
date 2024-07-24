@@ -21,8 +21,8 @@ Demo Link: [https://taiwan-college-app.netlify.app/](https://taiwan-college-app.
 
 After clicking on the card, you can see the analyzed teacher-student ratio data in multiple charts.
 
-![image](https://github.com/barrystone/taiwan-college-app/tree/master/public/images/demo/img1.png)
+![](https://raw.githubusercontent.com/barrystone/taiwan-college-app/master/public/images/demo/img1.png)
 
 On the home page, you can sort the university cards by selecting options (year, public or private, type, etc.) in the header.
 
-![image](https://github.com/barrystone/taiwan-college-app/tree/master/public/images/demo/img2.png)
+![](https://raw.githubusercontent.com/barrystone/taiwan-college-app/master/public/images/demo/img2.png)
